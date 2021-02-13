@@ -7,8 +7,8 @@ module.exports = fp(async function (fastify, opts) {
         routePrefix: '/documentation',
         swagger: {
           info: {
-            title: 'Weather API',
-            description: 'Weather info',
+            title: 'Key-Value API',
+            description: 'Key-Value store',
             version: '0.1.0'
           },
           externalDocs: {

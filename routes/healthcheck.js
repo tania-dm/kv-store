@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 module.exports = async function (fastify, opts) {
   fastify.route({
@@ -20,5 +20,5 @@ module.exports = async function (fastify, opts) {
     handler: async (request, reply) => {
       return { status: 'ok', timestamp: new Date().toISOString() };
     }
-  })
+  });
 }
