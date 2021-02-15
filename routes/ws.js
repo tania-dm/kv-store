@@ -1,9 +1,17 @@
 'use strict';
 
 function isValid(data) {
-    if (!Array.isArray(data)) return false;
-    if (data.length !== 2) return false;
-    if (typeof data[0] !== 'string') return false;
+    let payload;
+
+    try {
+        payload = JSON.parse(data);
+    } catch (error) {
+        return false;
+    }
+
+    if (!Array.isArray(payload)) return false;
+    if (payload.length !== 2) return false;
+    if (typeof payload[0] !== 'string') return false;
     return true;
 }
 
@@ -12,9 +20,8 @@ module.exports = async function (fastify, opts) {
 
     fastify.get('/ws/kv-store', { websocket: true }, (connection, req) => {
         connection.socket.on('message', data => {
-            const payload = JSON.parse(data);
-            if (isValid(payload)) {
-                const [key, value] = payload;
+            if (isValid(data)) {
+                const [key, value] = JSON.parse(data);
 
                 redis.set(key, JSON.stringify(value), (err) => {
                     if (err) {
