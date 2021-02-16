@@ -8,17 +8,11 @@ module.exports = async function (fastify, opts) {
       tags: ['Healthcheck'],
       description: 'Healthcheck endpoint to verify if the app is running propertly',
       response: {
-        200: {
-          type: 'object',
-          properties: {
-            status: { type: 'string' },
-            timestamp: { type: 'string', format: 'date-time' }
-          }
-        }
+        200: { type: 'string' }
       }
     },
-    handler: async (request, reply) => {
-      return { status: 'ok', timestamp: new Date().toISOString() };
+    handler: (request, reply) => {
+      reply.send('App running');
     }
   });
 }

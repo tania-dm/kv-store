@@ -39,6 +39,7 @@ client1.on('open', () => {
 
 client1.on('message', message => {
   console.log(message);
+  // check how to close connection
 });
 
 client2.on('open', () => {

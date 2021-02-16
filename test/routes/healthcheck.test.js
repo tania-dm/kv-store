@@ -1,13 +1,16 @@
 'use strict';
 
-const { test } = require('tap');
-const { build } = require('../helper');
+const setupTestEnv = require('../setup-test-environment');
+const fastify = setupTestEnv();
 
-test('Healthcheck route', async (t) => {
-  const app = build(t);
+test('it should get an ok response from the healthcheck route', async() => {
+  expect.assertions(2);
 
-  const res = await app.inject({
-    url: '/'
+  const serverResponse = await fastify.inject({
+    url: `/`,
+    method: 'GET'
   });
-  t.deepEqual(JSON.parse(res.payload).status, "ok");
+
+  expect(serverResponse.statusCode).toBe(200)
+  expect(serverResponse.body).toBe('App running')
 });

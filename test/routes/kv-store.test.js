@@ -1,22 +1,47 @@
 'use strict';
 
-const { test } = require('tap');
-const { build } = require('../helper');
+const setupTestEnv = require('../setup-test-environment');
+const fastify = setupTestEnv();
 
-test('successful GET :key route', async (t) => {
-  const app = build(t);
+test('it should retrieve the value of the requested key', async() => {
+  expect.assertions(2);
 
-  const res = await app.inject({
-    url: '/kv-store/banana'
+  const key = 'testKey';
+  const value = 'some value';
+
+  fastify.redis.set(key, JSON.stringify(value), err => {
+    if (err) {
+      console.error(err);
+    }
   });
-  t.equal(res.payload, 'ceva');
+
+  const serverResponse = await fastify.inject({
+    url: `/kv-store/${key}`,
+    method: 'GET'
+  });
+
+  expect(serverResponse.statusCode).toBe(200)
+  expect(JSON.parse(serverResponse.body)).toBe('some value')
 });
 
-test('unsuccessful GET :key route', async (t) => {
-  const app = build(t);
+test('it should receive a 400 status code response for non-existent key', async() => {
+  expect.assertions(2);
 
-  const res = await app.inject({
-    url: '/kv-store/something'
+  const key1 = 'testKey1';
+  const key2 = 'testKey2';
+  const value1 = 'some value';
+
+  fastify.redis.set(key1, JSON.stringify(value1), err => {
+    if (err) {
+      console.error(err);
+    }
   });
-  t.equal(res.payload, `Bad request. Keyname "something" does not exist.`);
+
+  const serverResponse = await fastify.inject({
+    url: `/kv-store/${key2}`,
+    method: 'GET'
+  });
+
+  expect(serverResponse.statusCode).toBe(400)
+  expect(serverResponse.body).toBe(`Bad request. Keyname "${key2}" does not exist.`)
 });
