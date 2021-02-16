@@ -19,7 +19,12 @@ function isValid(data) {
 module.exports = async function (fastify, opts) {
     const { redis } = fastify;
 
-    fastify.get('/ws/kv-store', { websocket: true }, (connection, req) => {
+    fastify.get('/ws/kv-store', {
+        websocket: true,
+        schema: {
+            hide: true
+        }
+    }, (connection, req) => {
         connection.socket.on('message', data => {
             if (isValid(data)) {
                 const [key, value] = JSON.parse(data);

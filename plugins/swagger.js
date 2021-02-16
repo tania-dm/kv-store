@@ -1,6 +1,9 @@
 'use strict';
 
 const fp = require('fastify-plugin');
+const appConfig = require('../config/app-config');
+
+const port = appConfig.PORT || 3000;
 
 module.exports = fp(async function (fastify, opts) {
     fastify.register(require('fastify-swagger'), {
@@ -15,7 +18,7 @@ module.exports = fp(async function (fastify, opts) {
             url: 'https://swagger.io',
             description: 'Find more info here'
           },
-          host: 'localhost:3000',
+          host: `localhost:${port}`,
           schemes: ['http'],
           consumes: ['application/json'],
           produces: ['application/json'],

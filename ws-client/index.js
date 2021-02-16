@@ -1,8 +1,11 @@
 const WebSocket = require('ws');
+const appConfig = require('../config/app-config');
 
-const client1 = new WebSocket('ws://localhost:3000/ws/kv-store');
-const client2 = new WebSocket('ws://localhost:3000/ws/kv-store');
-const client3 = new WebSocket('ws://localhost:3000/ws/kv-store');
+const port = appConfig.PORT || 3000;
+
+const client1 = new WebSocket(`ws://localhost:${port}/ws/kv-store`);
+const client2 = new WebSocket(`ws://localhost:${port}/ws/kv-store`);
+const client3 = new WebSocket(`ws://localhost:${port}/ws/kv-store`);
 
 const mySeeds1 = [
 	['forecast', {
@@ -30,7 +33,6 @@ client1.on('open', () => {
 });
 client1.on('message', message => {
 	console.log(message);
-	// check how to close connection
 });
 client1.on('close', function close() {
 	console.log('disconnected');

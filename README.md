@@ -8,6 +8,8 @@ The REST endpoint accepts GET requests specifying a key and it returns the corre
 #### API documentation
 Documentation was generated using [Swagger](https://swagger.io/) and can be accessed at http://localhost:3000/documentation.
 
+** Replace port to the one specific to your `process.env` if that is the case.
+
 #### Project installation
 1. Clone project
 2. Install dependencies: `npm install` or `yarn install`
