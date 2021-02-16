@@ -7,8 +7,7 @@ The REST endpoint accepts GET requests specifying a key and it returns the corre
 
 #### API documentation
 Documentation was generated using [Swagger](https://swagger.io/) and can be accessed at http://localhost:3000/documentation.
-
-** Replace port to the one specific to your `process.env` if that is the case.
+You can specify the server port using the **PORT** env variable.
 
 #### Project installation
 1. Clone project
@@ -16,4 +15,4 @@ Documentation was generated using [Swagger](https://swagger.io/) and can be acce
 3. Add a `.env` file or rename the `.env.example` file and add the corresponding environment variables as per the example.
 4. Run project: `npm run dev` or `yarn run dev`
 5. Add some data in Redis: `npm run seed` or `yarn run seed`
-6. Run tests: `npm run test` or `yarn run test`
+6. Run tests: first stop the server and then run either `npm run test` or `yarn run test`

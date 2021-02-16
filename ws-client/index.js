@@ -30,33 +30,29 @@ client1.on('open', () => {
 	mySeeds1.forEach(item => {
 		client1.send(JSON.stringify(item));
 	});
+	client1.close();
 });
 client1.on('message', message => {
 	console.log(message);
-});
-client1.on('close', function close() {
-	console.log('disconnected');
 });
 
 client2.on('open', () => {
 	mySeeds2.forEach(item => {
 		client2.send(JSON.stringify(item));
 	});
+	client2.close();
 });
 
 client2.on('message', message => {
 	console.log(message);
 });
-client2.on('close', function close() {
-	console.log('disconnected');
-});
+
 
 client3.on('open', () => {
 	client3.send(JSON.stringify(['wind', '50 km/h']));
+	client3.close();
+
 });
 client3.on('message', message => {
 	console.log(message);
-});
-client3.on('close', function close() {
-	console.log('disconnected');
 });
