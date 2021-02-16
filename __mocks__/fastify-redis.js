@@ -1,6 +1,6 @@
 // mock-plugin for redis test instance
 
-'use strict'
+'use strict';
 
 const fp = require('fastify-plugin');
 const Redis = require('ioredis-mock');

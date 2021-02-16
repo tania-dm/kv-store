@@ -30,4 +30,4 @@ module.exports = function setupTestEnv() {
     });
 
     return fastify;
-}
+};

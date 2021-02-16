@@ -15,4 +15,4 @@ module.exports = async function (fastify, opts) {
       reply.send('App running');
     }
   });
-}
+};

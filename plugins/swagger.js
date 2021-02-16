@@ -1,6 +1,6 @@
-'use strict'
+'use strict';
 
-const fp = require('fastify-plugin')
+const fp = require('fastify-plugin');
 
 module.exports = fp(async function (fastify, opts) {
     fastify.register(require('fastify-swagger'), {
@@ -25,5 +25,5 @@ module.exports = fp(async function (fastify, opts) {
           deepLinking: false
         },
         exposeRoute: true
-      })
-})
+      });
+});
