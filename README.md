@@ -13,4 +13,5 @@ Documentation was generated using [Swagger](https://swagger.io/) and can be acce
 2. Install dependencies: `npm install` or `yarn install`
 3. Add a `.env` file or rename the `.env.example` file and add the corresponding environment variables as per the example.
 4. Run project: `npm run dev` or `yarn run dev`
-5. Run tests: `npm run test` or `yarn run test`
+5. Add some data in Redis: `npm run seed` or `yarn run seed`
+6. Run tests: `npm run test` or `yarn run test`

@@ -10,7 +10,8 @@
     "tap": "tap test/**/*.test.js",
     "start": "fastify start -l info app.js",
     "dev": "fastify start -w -l info -P app.js",
-    "test": "jest --coverage --runInBand"
+    "test": "jest --coverage --runInBand",
+    "seed": "node ./ws-client/index.js"
   },
   "keywords": [],
   "author": "",

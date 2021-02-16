@@ -1,5 +1,6 @@
 'use strict';
 
+// helper function to validate the data to be saved in Redis.
 function isValid(data) {
     let payload;
 
