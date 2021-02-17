@@ -15,4 +15,5 @@ You can specify the server port using the **PORT** env variable.
 3. Add a `.env` file or rename the `.env.example` file and add the corresponding environment variables as per the example.
 4. Run project: `npm run dev` or `yarn run dev`
 5. Add some data in Redis: `npm run seed` or `yarn run seed`
+ * *Tip: You can make the **GET** request to fetch data using Swagger UI on the appropriate route.*
 6. Run tests: first stop the server and then run either `npm run test` or `yarn run test`
