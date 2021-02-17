@@ -19,4 +19,4 @@ You can specify the server port using the **PORT** env variable.
 5. Add some data in Redis: `npm run seed` or `yarn run seed`
 6. Run tests: first stop the server and then run either `npm run test` or `yarn run test`
 
-Diclaimer: If the redis container stops at any point, data will be persisted in an AOF file in `data/redis` in project's the root folder.
+Diclaimer: If the redis container stops at any point, data will be persisted in an AOF file in `data/redis` in project's root folder.
