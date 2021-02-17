@@ -6,7 +6,7 @@ The REST endpoint accepts GET requests specifying a key and it returns the corre
 
 
 #### API documentation
-Documentation was generated using [Swagger](https://swagger.io/) and can be accessed at http://localhost:3000/documentation.
+Documentation was generated using [Swagger](https://swagger.io/) and can be accessed at 127.0.0.1:3000/documentation.
 You can specify the server port using the **PORT** env variable.
 
 #### Project installation
