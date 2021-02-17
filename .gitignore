@@ -59,3 +59,6 @@ profile*
 
 # generated code
 .env
+
+# docker volume
+data

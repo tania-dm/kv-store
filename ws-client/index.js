@@ -26,11 +26,17 @@ const mySeeds2 = [
 	['precipitation', '50 mm'],
 ];
 
+function waitToClose(time, client) {
+	setTimeout(() => {
+		client.close();
+	}, time)
+}
+
 client1.on('open', () => {
 	mySeeds1.forEach(item => {
 		client1.send(JSON.stringify(item));
 	});
-	client1.close();
+	waitToClose(1000, client1);
 });
 client1.on('message', message => {
 	console.log(message);
@@ -40,7 +46,7 @@ client2.on('open', () => {
 	mySeeds2.forEach(item => {
 		client2.send(JSON.stringify(item));
 	});
-	client2.close();
+	waitToClose(1000, client2);
 });
 
 client2.on('message', message => {
@@ -50,7 +56,7 @@ client2.on('message', message => {
 
 client3.on('open', () => {
 	client3.send(JSON.stringify(['wind', '50 km/h']));
-	client3.close();
+	waitToClose(1000, client3);
 
 });
 client3.on('message', message => {

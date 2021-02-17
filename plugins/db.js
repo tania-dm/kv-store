@@ -2,13 +2,10 @@
 
 const fp = require('fastify-plugin');
 
-const appConfig = require('../config/app-config');
-
 module.exports = fp(async function (fastify, opts) {
     fastify.register(require('fastify-redis'), {
-        port: appConfig.redisPort,
-        host: appConfig.redisHostname,
-        password: appConfig.redisPassword,
+        port: 6379,
+        host: '127.0.0.1',
         db: 0
     });
 })

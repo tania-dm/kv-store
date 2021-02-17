@@ -18,7 +18,7 @@ module.exports = fp(async function (fastify, opts) {
             url: 'https://swagger.io',
             description: 'Find more info here'
           },
-          host: `localhost:${port}`,
+          host: `127.0.0.1:${port}`,
           schemes: ['http'],
           consumes: ['application/json'],
           produces: ['application/json'],
