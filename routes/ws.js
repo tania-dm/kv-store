@@ -25,17 +25,16 @@ module.exports = async function (fastify, opts) {
             hide: true
         }
     }, (connection, req) => {
-        connection.socket.on('message', data => {
+        connection.socket.on('message', async (data) => {
             if (isValid(data)) {
                 const [key, value] = JSON.parse(data);
+                try {
+                   await redis.set(key, JSON.stringify(value));
+                   connection.socket.send('Data saved to database');
 
-                redis.set(key, JSON.stringify(value), (err) => {
-                    if (err) {
-                        connection.socket.send(err);
-                    } else {
-                        connection.socket.send('Data saved to database');
-                    }
-                });
+                } catch (error) {
+                    connection.socket.send(error);
+                }
             } else {
                 connection.socket.send('Data should be an array with first element a string and second one a valid JSON data structure');
             }

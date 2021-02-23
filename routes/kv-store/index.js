@@ -20,8 +20,10 @@ module.exports = async function (fastify, opts) {
         400: { type: 'string' }
       }
     },
-    handler: (request, reply) => {
-      redis.get(request.params.key, (err, val) => {
+    handler: async (request, reply) => {
+      try {
+        const val = await redis.get(request.params.key);
+
         if (val === null ) {
           reply
             .code(400)
@@ -30,7 +32,9 @@ module.exports = async function (fastify, opts) {
           reply
             .send(val);
         }
-      });
+      } catch (error) {
+        console.error(error);
+      }
     }
   });
 };
