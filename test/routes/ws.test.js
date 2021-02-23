@@ -23,8 +23,8 @@ test('it should save data to db', done => {
                 expect(msg).toBe('Data saved to database');
 
                 client.close();
+                done();
             })
-            .on('close', () => done());
     })
 });
 

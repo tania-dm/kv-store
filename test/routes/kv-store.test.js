@@ -9,11 +9,7 @@ test('it should retrieve the value of the requested key', async() => {
   const key = 'testKey';
   const value = 'some value';
 
-  fastify.redis.set(key, JSON.stringify(value), err => {
-    if (err) {
-      console.error(err);
-    }
-  });
+  await fastify.redis.set(key, JSON.stringify(value));
 
   const serverResponse = await fastify.inject({
     url: `/kv-store/${key}`,
@@ -31,11 +27,7 @@ test('it should receive a 400 status code response for non-existent key', async(
   const key2 = 'testKey2';
   const value1 = 'some value';
 
-  fastify.redis.set(key1, JSON.stringify(value1), err => {
-    if (err) {
-      console.error(err);
-    }
-  });
+  await fastify.redis.set(key1, JSON.stringify(value1));
 
   const serverResponse = await fastify.inject({
     url: `/kv-store/${key2}`,
