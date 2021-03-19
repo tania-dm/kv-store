@@ -59,3 +59,4 @@ profile*
 
 # generated code
 .env
+data

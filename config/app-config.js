@@ -15,5 +15,6 @@ function loadEnvironmentVariable(keyname) {
 module.exports = {
 	redisPort: loadEnvironmentVariable("REDIS_PORT"),
 	redisHostname: loadEnvironmentVariable("REDIS_HOSTNAME"),
-	redisPassword: loadEnvironmentVariable("REDIS_PASSWORD")
+	redisPassword: loadEnvironmentVariable("REDIS_PASSWORD"),
+	port: loadEnvironmentVariable("PORT")
 };

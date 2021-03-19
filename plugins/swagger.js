@@ -3,7 +3,7 @@
 const fp = require('fastify-plugin');
 const appConfig = require('../config/app-config');
 
-const port = appConfig.PORT || 3000;
+const port = appConfig.port || 3000;
 
 module.exports = fp(async function (fastify, opts) {
     fastify.register(require('fastify-swagger'), {
