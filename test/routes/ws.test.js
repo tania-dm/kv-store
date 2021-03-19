@@ -4,7 +4,7 @@ const WebSocket = require('ws');
 const setupTestEnv = require('../setup-test-environment');
 const appConfig = require('../../config/app-config');
 
-const port = appConfig.PORT || 3000;
+const port = appConfig.port || 3000;
 
 const fastify = setupTestEnv();
 
